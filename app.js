@@ -27,7 +27,6 @@ app.use((req, res, next) => {
 const customerRouter = require('./routes/Customer');
 const administratorRouter = require('./routes/Administrator');
 
-
 app.use('/api', customerRouter);
 app.use('/api', administratorRouter);
 
