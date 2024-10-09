@@ -24,15 +24,15 @@ app.use((req, res, next) => {
 });
 
 // Rutas
-const customerRouter = require('./routes/Customer');
-const administratorRouter = require('./routes/Administrator');
+const customerRouter = require('./routes/Customer.js');
+const administratorRouter = require('./routes/Administrator.js');
 
 app.use('/api', customerRouter);
 app.use('/api', administratorRouter);
 
-app.get('/', (req, res) => {
-    res.redirect('/api-docs');
-});
+// app.get('/', (req, res) => {
+//     res.redirect('/api-docs');
+// });
 // Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
