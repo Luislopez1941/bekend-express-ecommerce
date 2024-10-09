@@ -30,6 +30,9 @@ const administratorRouter = require('./routes/Administrator');
 app.use('/api', customerRouter);
 app.use('/api', administratorRouter);
 
+app.get('/', (req, res) => {
+    res.redirect('/api-docs');
+});
 // Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
