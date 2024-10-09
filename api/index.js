@@ -30,28 +30,28 @@ const administratorRouter = require('./routes/Administrator.js');
 app.use('/api', customerRouter);
 app.use('/api', administratorRouter);
 
-// app.get('/', (req, res) => {
-//     res.redirect('/api-docs');
-// });
 // Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
 // Conectar a la base de datos
-// async function connectDB() {
-//     try {
-//         await mongoose.connect('mongodb://localhost:27017/ecommerce-01', {
-//             useNewUrlParser: true,
-//             useUnifiedTopology: true
-//         });
-//         console.log('Server running and database connected');
+async function connectDB() {
+    try {
+        await mongoose.connect('mongodb://localhost:27017/ecommerce-01', {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+        console.log('Server running and database connected');
         
-//         // Iniciar el servidor
-//         app.listen(port, function () {
-//             console.log(`Server running on http://localhost:${port}`);
-//         });
-//     } catch (err) {
-//         console.error('Error connecting to MongoDB', err);
-//     }
-// }
+        // Iniciar el servidor
+        app.listen(port, function () {
+            console.log(`Server running on http://localhost:${port}`);
+        });
+    } catch (err) {
+        console.error('Error connecting to MongoDB', err);
+    }
+}
 
-// connectDB();
+connectDB();
+
+// Exportar la aplicación
+module.exports = app; // Agrega esta línea
