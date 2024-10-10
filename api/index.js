@@ -4,6 +4,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.6.2/swagger-ui.min.css";
+const indexCss = "./styles/index.css"
+const swaggerCss = "./styles/swagger-ui.css"
 const openapiSpecification = require('./swagger/swagger.js'); // Cambia esto según tu estructura de carpetas
 const mongoose = require('mongoose');
 require('dotenv').config();
@@ -32,23 +34,15 @@ const administratorRouter = require('./routes/Administrator.js');
 app.use('/api', customerRouter);
 app.use('/api', administratorRouter);
 
+
 // app.get('/', (req, res) => {
 //     res.redirect('/api-docs');
 // });
 // Swagger
+app.use(express.static('public')); 
+
 var options = {
-    customCssUrl: CSS_URL,
-    customCss: `
-        .opblock-summary-path-description-wrapper {
-            align-items: center;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 0 10px;
-            padding: 0 10px;
-            width: 100%;
-        }
-    `,
+    customCssUrl: swaggerCss,
     swaggerOptions: {
         docExpansion: 'none',
         filter: true,
