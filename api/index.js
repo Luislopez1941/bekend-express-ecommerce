@@ -56,3 +56,4 @@ async function connectDB() {
 
 // Exporta la función de conexión
 connectDB();
+module.exports = app;
