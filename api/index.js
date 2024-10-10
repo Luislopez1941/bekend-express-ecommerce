@@ -30,8 +30,11 @@ const administratorRouter = require('./routes/Administrator.js');
 app.use('/api', customerRouter);
 app.use('/api', administratorRouter);
 
+// app.get('/', (req, res) => {
+//     res.redirect('/api-docs');
+// });
 // Swagger
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
+app.use('/', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
 // Conectar a la base de datos
 async function connectDB() {
@@ -52,6 +55,3 @@ async function connectDB() {
 }
 
 connectDB();
-
-// Exportar la aplicación
-module.exports = app; // Agrega esta línea

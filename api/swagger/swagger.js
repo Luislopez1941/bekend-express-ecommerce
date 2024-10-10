@@ -18,7 +18,7 @@ const options = {
       },
     ],
   },
-  apis: ['./routes/*.js'], // Busca todos los archivos en la carpeta routes
+  apis: ['./api/routes/*.js'], // Busca todos los archivos en la carpeta routes
 };
 
 const openapiSpecification = swaggerJsdoc(options);
