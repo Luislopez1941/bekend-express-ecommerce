@@ -3,6 +3,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
+const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
 const openapiSpecification = require('./swagger/swagger.js'); // Cambia esto según tu estructura de carpetas
 const mongoose = require('mongoose');
 require('dotenv').config();
@@ -35,7 +36,18 @@ app.use('/api', administratorRouter);
 //     res.redirect('/api-docs');
 // });
 // Swagger
-app.use('/', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
+var options = {
+    customCssUrl: CSS_URL,
+    swaggerOptions: {
+      docExpansion: 'none',
+      filter: true,
+      showRequestHeaders: true
+    },
+    customSiteTitle: 'Mi API Documentación'
+};
+
+app.use('/', swaggerUi.serve, swaggerUi.setup(openapiSpecification, options));
+
 
 // Conectar a la base de datos
 async function connectDB() {
