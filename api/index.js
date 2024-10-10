@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 const openapiSpecification = require('./swagger/swagger.js'); // Cambia esto según tu estructura de carpetas
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const port = process.env.PORT || 4000;
 const app = express();
@@ -35,25 +36,23 @@ app.use('/api', administratorRouter);
 // });
 // Swagger
 app.use('/', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
-app.listen(port, function () {
-    console.log(`Server running on http://localhost:${port}`);
-});
-// Conectar a la base de datos
-// async function connectDB() {
-//     try {
-//         await mongoose.connect('mongodb://localhost:27017/ecommerce-01', {
-//             useNewUrlParser: true,
-//             useUnifiedTopology: true
-//         });
-//         console.log('Server running and database connected');
-        
-//         // Iniciar el servidor
-//         app.listen(port, function () {
-//             console.log(`Server running on http://localhost:${port}`);
-//         });
-//     } catch (err) {
-//         console.error('Error connecting to MongoDB', err);
-//     }
-// }
 
-// connectDB();
+// Conectar a la base de datos
+async function connectDB() {
+    try {
+        const dbUrl = process.env.MONGODB_URI;
+        
+        await mongoose.connect(dbUrl);
+        console.log('Server running and database connected');
+        
+        // Iniciar el servidor
+        app.listen(port, function () {
+            console.log(`Server running on http://localhost:${port}`);
+        });
+    } catch (err) {
+        console.error('Error connecting to MongoDB', err);
+    }
+}
+
+// Exporta la función de conexión
+connectDB();
