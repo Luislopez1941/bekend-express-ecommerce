@@ -61,7 +61,7 @@ let api = express.Router();
 
 /**
  * @swagger
- * /api/routes/administrator_registration:
+ * /api/administrator_registration:
  *  post:
  *    summary: Register a new administrator
  *    tags: [Administrators]

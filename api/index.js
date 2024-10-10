@@ -32,10 +32,6 @@ const administratorRouter = require('./routes/Administrator.js');
 app.use('/api', customerRouter);
 app.use('/api', administratorRouter);
 
-
-// app.get('/', (req, res) => {
-//     res.redirect('/api-docs');
-// });
 // Swagger
 app.use(express.static('public')); 
 
@@ -50,6 +46,15 @@ var options = {
             gap: 0 10px;
             padding: 0 10px;
             width: 100%;
+        }
+
+        .operation-tag-content > span > div > div > div {
+            width: 30px;
+            right: 0;
+        }
+
+        .swagger-ui .opblock .opblock-summary:hover .view-line-link {
+            width: 30px;
         }
     `,
     swaggerOptions: {
