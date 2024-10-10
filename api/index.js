@@ -37,10 +37,14 @@ app.use('/api', administratorRouter);
 // });
 // Swagger
 var options = {
+    customCssUrl: CSS_URL,
     swaggerOptions: {
-      url: 'http://petstore.swagger.io/v2/swagger.json'
-    }
-  }
+      docExpansion: 'none',
+      filter: true,
+      showRequestHeaders: true
+    },
+    customSiteTitle: 'Mi API Documentación'
+};
 
 app.use('/', swaggerUi.serve, swaggerUi.setup(openapiSpecification, options));
 
