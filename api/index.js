@@ -38,10 +38,21 @@ app.use('/api', administratorRouter);
 // Swagger
 var options = {
     customCssUrl: CSS_URL,
+    customCss: `
+        .opblock-summary-path-description-wrapper {
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 0 10px;
+            padding: 0 10px;
+            width: 100%;
+        }
+    `,
     swaggerOptions: {
-      docExpansion: 'none',
-      filter: true,
-      showRequestHeaders: true
+        docExpansion: 'none',
+        filter: true,
+        showRequestHeaders: true
     },
     customSiteTitle: 'Mi API Documentación'
 };
