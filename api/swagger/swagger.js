@@ -4,9 +4,9 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Hello World',
+      title: 'API for managing Ecommerce',
       version: '1.0.0',
-      description: 'API for managing Jedi',
+      description: 'API for managing Ecommerce',
       contact: {
         name: 'Luis Lopez',
       },
@@ -18,9 +18,8 @@ const options = {
       },
     ],
   },
-  apis: ['./api/routes/*.js'], // Busca todos los archivos en la carpeta routes
+  apis: ['./api/routes/**/*.js'], // Busca archivos dentro de api/routes
 };
 
 const openapiSpecification = swaggerJsdoc(options);
-
 module.exports = openapiSpecification;
