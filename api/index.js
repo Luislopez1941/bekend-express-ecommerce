@@ -48,8 +48,7 @@ var options = {
             width: 100%;
         }
 
-        .operation-tag-content > span > div > div > div {
-            width: 30px;
+        .operation-tag-content > span > div > div:first-child > div {
             right: 0;
         }
 
