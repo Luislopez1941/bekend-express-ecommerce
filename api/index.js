@@ -42,7 +42,7 @@ app.use(express.static('public'));
 var options = {
     customCssUrl: CSS_URL,
     customCss: `
-        .operation-tag-content > span > div > divc > button > div {
+        .operation-tag-content > span > div > div > button > div {
             align-items: center;
             display: flex;
             flex-direction: row;
